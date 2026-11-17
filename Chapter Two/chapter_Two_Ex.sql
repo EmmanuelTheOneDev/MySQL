@@ -95,14 +95,15 @@
 -- 2.37
 -- select WarehouseID, sum(QuantityOnHand) as  TotalItemsOnHandLT3
 -- from inventory
+-- where QuantityOnHand < 3
 -- group by WarehouseID
--- having count(SKU) >= 3
 -- order by TotalItemsOnHandLT3 desc;
+
 
 -- 2.38
--- select WarehouseID, sum(QuantityOnHand) as  TotalItemsOnHandLT3
--- from inventory
--- group by WarehouseID
--- having count(SKU) >= 3
--- order by TotalItemsOnHandLT3 desc;
-
+select WarehouseID, sum(QuantityOnHand) as  TotalItemsOnHandLT3
+from inventory
+where QuantityOnHand < 3
+group by WarehouseID
+having count(sku) < 2
+order by TotalItemsOnHandLT3 desc;
